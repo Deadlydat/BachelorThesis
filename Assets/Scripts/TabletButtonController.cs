@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Questions;
+using static Answers;
+using System.Linq;
 
 public class TabletButtonController : MonoBehaviour
 {
@@ -14,11 +16,14 @@ public class TabletButtonController : MonoBehaviour
     private Text TextButtonD;
 
     public Questions questionsScript;
+    public Answers answerScript;
     public GameObject startObject;
     public GameObject uiTablet;
 
     private QuestionList questionsList;
     private int questionNumber = 0;
+
+    private AnswerList answerList ;
 
 
     void Start()
@@ -30,17 +35,19 @@ public class TabletButtonController : MonoBehaviour
         TextButtonD = GameObject.Find("TextButtonD").GetComponentInChildren<Text>();
 
         questionsList = questionsScript.mQuestionList;
-        SetQuestion(questionNumber);
-        questionNumber++;
+       
+        SetNewQuestion();
+
     }
 
 
 
     void OnEnable()
     {
+        answerList = new AnswerList();
         //darf das aller erstemal nicht gecalled werden
-        SetQuestion(questionNumber);
-        questionNumber++;
+        SetNewQuestion();
+
     }
 
 
@@ -57,6 +64,18 @@ public class TabletButtonController : MonoBehaviour
         TextButtonD.text = questionsList.questions[questionNumber].answerD;
 
     }
+    private void CreateAnswer(bool correctness)
+    {
+        
+        Answer answer = new Answer();
+        answer.question = questionsList.questions[questionNumber - 1].question;
+        answer.correctness = correctness;
+        answer.time = 1.0f;
+        answer.tool = false;
+        answer.degree = 0;
+        
+        answerList.answers.Append(answer);
+    }
 
     private void SetNewQuestion()
     {
@@ -67,6 +86,8 @@ public class TabletButtonController : MonoBehaviour
         }
         else
         {
+            answerScript.WriteAnswersToFile(answerList);
+
             questionNumber = 0;
             startObject.SetActive(true);
 
@@ -78,25 +99,34 @@ public class TabletButtonController : MonoBehaviour
 
     public void TaskOnClickA()
     {
-        Debug.Log("You have clicked the button a!");
+        //Debug.Log("You have clicked the button a!");
+
+
+        CreateAnswer(questionsList.questions[questionNumber - 1].boolA);
         SetNewQuestion();
 
     }
     public void TaskOnClickB()
     {
-        Debug.Log("You have clicked the button b!");
+        //Debug.Log("You have clicked the button b!");
+
+
+        CreateAnswer(questionsList.questions[questionNumber - 1].boolB);
         SetNewQuestion();
     }
     public void TaskOnClickC()
     {
-        Debug.Log("You have clicked the button c!");
+        //Debug.Log("You have clicked the button c!");
+
+
+        CreateAnswer(questionsList.questions[questionNumber - 1].boolC);
         SetNewQuestion();
     }
     public void TaskOnClickD()
     {
-        Debug.Log("You have clicked the button d!");
+        //Debug.Log("You have clicked the button d!");
+
+        CreateAnswer(questionsList.questions[questionNumber - 1].boolD);
         SetNewQuestion();
-
-
     }
 }
