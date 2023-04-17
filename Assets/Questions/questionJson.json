@@ -1,0 +1,48 @@
+{
+  "questions": [
+    {
+      "question": "wie war die frage?",
+      "answerA": "war gut",
+      "boolA": true,
+      "answerB": "war naja",
+      "boolB": false,
+      "answerC": "jojo vllt auch ja aber auch nein gut",
+      "boolC": false,
+      "answerD": "vllt",
+      "boolD": false
+    },
+    {
+      "question": "Welcher der sieben Zwerge in Schneewittchen hat einen langen Bart?",
+      "answerA": "könnte vllt",
+      "boolA": false,
+      "answerB": "war naja",
+      "boolB": false,
+      "answerC": "jojo vllt auch ja aber auch nein gut",
+      "boolC": true,
+      "answerD": "ok oke oket",
+      "boolD": false
+    },
+    {
+      "question": "Welches Tier ist der offizielle Spielball im American Football?",
+      "answerA": "könnte vllt",
+      "boolA": false,
+      "answerB": "war naja",
+      "boolB": false,
+      "answerC": "jojo vllt auch ja aber auch nein gut jajajs",
+      "boolC": true,
+      "answerD": "ok oke oket",
+      "boolD": false
+    },
+    {
+      "question": "Wer war der erste Mensch im Weltall?",
+      "answerA": "könnte vllt",
+      "boolA": false,
+      "answerB": "war naja etwas schnell vllt keins ja vllt nein jaa ök ja",
+      "boolB": false,
+      "answerC": "jojo vllt auch ja aber auch nein gut",
+      "boolC": true,
+      "answerD": "ok oke oket",
+      "boolD": false
+    }
+  ]
+}
