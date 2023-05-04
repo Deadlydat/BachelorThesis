@@ -11,38 +11,60 @@ public class Answers : MonoBehaviour
     {
         public string question;
         public bool correctness;
-        public float time;
+        public int time;
         public bool tool; //ob mit oder ohne ai tool
         public int degree; // welche studienrichtung
+
     }
+
+
 
     [System.Serializable]
     public class AnswerList
     {
-        public Answer[] answers;
+        public Answer[] answers = new Answer[5];
 
     }
 
-    public void WriteAnswersToFile(AnswerList answerList)
+
+    //public void WriteAnswersToFile(AnswerList answerList)
+    //{
+
+    //    string fileName = "bla";
+    //    string json = JsonUtility.ToJson(answerList);
+    //    string path = GetFilePath(fileName);
+    //    FileStream fileStream = new FileStream(path, FileMode.Create);
+
+    //    using (StreamWriter writer = new StreamWriter(fileStream))
+    //    {
+    //        writer.Write(json);
+    //    }
+
+    //}
+    //private string GetFilePath(string fileName)
+    //{
+    //    return Application.persistentDataPath + "/" + fileName;
+    //}
+
+    public void SaveItemInfo(AnswerList answerList)
     {
 
-        string fileName = "bla";
-        string json = JsonUtility.ToJson(answerList);
-        string path = GetFilePath(fileName);
-        FileStream fileStream = new FileStream(path, FileMode.Create);
 
-        using (StreamWriter writer = new StreamWriter(fileStream))
+       string  path = "Assets/Answers/Answers.json";
+
+
+        string str = JsonUtility.ToJson(answerList);
+        using (FileStream fs = new FileStream(path, FileMode.Create))
         {
-            writer.Write(json);
+            using (StreamWriter writer = new StreamWriter(fs))
+            {
+                writer.Write(str);
+            }
         }
 
-    }
-    private string GetFilePath(string fileName)
-    {
-        return Application.persistentDataPath + "/" + fileName;
-    }
+        UnityEditor.AssetDatabase.Refresh();
 
-
+    }
 
 
 }

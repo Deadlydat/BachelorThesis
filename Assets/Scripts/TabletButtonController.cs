@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using static Questions;
 using static Answers;
 using System.Linq;
+using System.Diagnostics;
+using System;
 
 public class TabletButtonController : MonoBehaviour
 {
@@ -23,7 +25,9 @@ public class TabletButtonController : MonoBehaviour
     private QuestionList questionsList;
     private int questionNumber = 0;
 
-    private AnswerList answerList ;
+    private AnswerList answerList;
+
+    private Stopwatch stopWatch;
 
 
     void Start()
@@ -35,7 +39,7 @@ public class TabletButtonController : MonoBehaviour
         TextButtonD = GameObject.Find("TextButtonD").GetComponentInChildren<Text>();
 
         questionsList = questionsScript.mQuestionList;
-       
+
         SetNewQuestion();
 
     }
@@ -63,30 +67,38 @@ public class TabletButtonController : MonoBehaviour
         TextButtonC.text = questionsList.questions[questionNumber].answerC;
         TextButtonD.text = questionsList.questions[questionNumber].answerD;
 
+        stopWatch = Stopwatch.StartNew();
+
     }
     private void CreateAnswer(bool correctness)
     {
-        
-        Answer answer = new Answer();
-        answer.question = questionsList.questions[questionNumber - 1].question;
-        answer.correctness = correctness;
-        answer.time = 1.0f;
-        answer.tool = false;
-        answer.degree = 0;
-        
-        answerList.answers.Append(answer);
+        stopWatch.Stop();
+        TimeSpan ts = stopWatch.Elapsed;
+
+        Answer answer = new()
+        {
+            question = questionsList.questions[questionNumber - 1].question,
+            correctness = correctness,
+            time = ts.Seconds,
+            tool = false,
+            degree = 0
+        };
+
+        answerList.answers[questionNumber - 1] = answer;
+
     }
 
     private void SetNewQuestion()
     {
         if (questionNumber < questionsList.questions.Length)
+
         {
             SetQuestion(questionNumber);
             questionNumber++;
         }
         else
         {
-            answerScript.WriteAnswersToFile(answerList);
+            answerScript.SaveItemInfo(answerList);
 
             questionNumber = 0;
             startObject.SetActive(true);
