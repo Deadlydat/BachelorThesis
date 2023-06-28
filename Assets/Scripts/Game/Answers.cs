@@ -38,7 +38,7 @@ public class Answers : MonoBehaviour
         int newFileNumber = CalculateAnswerNumber();
   
 
-       string  path = "Assets/Answers/Answers"+newFileNumber+".json";
+       string  path = "Assets/Answers/AnswersFile" + newFileNumber+".json";
 
 
         string str = JsonUtility.ToJson(answerList);
@@ -50,7 +50,7 @@ public class Answers : MonoBehaviour
             }
         }
 
-        UnityEditor.AssetDatabase.Refresh();
+        //UnityEditor.AssetDatabase.Refresh();
 
     }
 
