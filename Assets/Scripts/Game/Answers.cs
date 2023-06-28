@@ -12,9 +12,6 @@ public class Answers : MonoBehaviour
         public string question;
         public bool correctness;
         public int time;
-        public bool tool; //ob mit oder ohne ai tool
-        public int degree; // welche studienrichtung
-
     }
 
 
@@ -22,35 +19,26 @@ public class Answers : MonoBehaviour
     [System.Serializable]
     public class AnswerList
     {
-        public Answer[] answers = new Answer[5];
+        public Answer[] answers = new Answer[4];
 
     }
 
 
-    //public void WriteAnswersToFile(AnswerList answerList)
-    //{
+    private int CalculateAnswerNumber()
+    {
+        string path = "Assets/Answers";
+        int fCount = Directory.GetFiles(path, "*.json", SearchOption.TopDirectoryOnly).Length;
 
-    //    string fileName = "bla";
-    //    string json = JsonUtility.ToJson(answerList);
-    //    string path = GetFilePath(fileName);
-    //    FileStream fileStream = new FileStream(path, FileMode.Create);
-
-    //    using (StreamWriter writer = new StreamWriter(fileStream))
-    //    {
-    //        writer.Write(json);
-    //    }
-
-    //}
-    //private string GetFilePath(string fileName)
-    //{
-    //    return Application.persistentDataPath + "/" + fileName;
-    //}
+        return fCount;
+    }
 
     public void SaveItemInfo(AnswerList answerList)
     {
+     
+        int newFileNumber = CalculateAnswerNumber();
+  
 
-
-       string  path = "Assets/Answers/Answers.json";
+       string  path = "Assets/Answers/Answers"+newFileNumber+".json";
 
 
         string str = JsonUtility.ToJson(answerList);

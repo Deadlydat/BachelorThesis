@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Questions;
 using static Answers;
-using System.Linq;
 using System.Diagnostics;
 using System;
 
@@ -19,7 +15,7 @@ public class TabletButtonController : MonoBehaviour
 
     public Questions questionsScript;
     public Answers answerScript;
-    public GameObject startObject;
+    public GameObject endeObject;
     public GameObject uiTablet;
 
     private QuestionList questionsList;
@@ -79,9 +75,7 @@ public class TabletButtonController : MonoBehaviour
         {
             question = questionsList.questions[questionNumber - 1].question,
             correctness = correctness,
-            time = ts.Seconds,
-            tool = false,
-            degree = 0
+            time = ts.Seconds
         };
 
         answerList.answers[questionNumber - 1] = answer;
@@ -101,7 +95,7 @@ public class TabletButtonController : MonoBehaviour
             answerScript.SaveItemInfo(answerList);
 
             questionNumber = 0;
-            startObject.SetActive(true);
+            endeObject.SetActive(true);
 
             uiTablet.SetActive(false);
         }
