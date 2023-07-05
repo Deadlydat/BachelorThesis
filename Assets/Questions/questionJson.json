@@ -43,6 +43,78 @@
       "boolC": false,
       "answerD": "Buzz Aldrin",
       "boolD": false
+    },
+      {
+      "question": "Mit wem stand Edmund Hillary 1953 auf dem Gipfel des Mount Everest?",
+      "answerA": "Nasreddin Hodscha ",
+      "boolA": false,
+      "answerB": "Nursay Pimsorn",
+      "boolB": false,
+      "answerC": "Tenzing Norgay",
+      "boolC": true,
+      "answerD": "Abrindranath Singh",
+      "boolD": false
+    },
+
+     {
+      "question": "Welcher berühmte Schriftsteller erbaute als diplomierter Architekt ein Freibad in Zürich?",
+      "answerA": "Joseph Roth",
+      "boolA": false,
+      "answerB": "Martin Walser",
+      "boolB": false,
+      "answerC": "Max Frisch",
+      "boolC": true,
+      "answerD": "Friedrich Dürrenmatt",
+      "boolD": false
     }
+    ,
+     {
+      "question": "Wer bekam 1954 den Chemie- und 1962 den Friedensnobelpreis?",
+      "answerA": "Linus Pauling",
+      "boolA": true,
+      "answerB": "Otto Hahn",
+      "boolB": false,
+      "answerC": "Pearl S. Buck",
+      "boolC": false,
+      "answerD": "Albert Schweitzer",
+      "boolD": false
+    }
+       ,
+     {
+      "question": "Welches chemische Element macht mehr als die Hälfte der Masse eines menschlichen Körpers aus?",
+      "answerA": "Kohlenstoff",
+      "boolA": false,
+      "answerB": "Kalzium",
+      "boolB": false,
+      "answerC": "Sauerstoff",
+      "boolC": true,
+      "answerD": "Eisen",
+      "boolD": false
+    }
+         ,
+     {
+      "question": "Welches Meer ist nach einem mythologischen König benannt, der sich dort hineingestürzt haben soll?",
+      "answerA": "Ionisches Meer",
+      "boolA": false,
+      "answerB": "Ägäisches Meer",
+      "boolB": true,
+      "answerC": "Adriatisches Meer",
+      "boolC": false,
+      "answerD": "Kaspisches Meer",
+      "boolD": false
+    }
+         ,
+     {
+      "question": "Welches dieser Grimm'schen Märchen beginnt nicht mit \"Es war einmal...\"?",
+      "answerA": "Rumpelstilzchen",
+      "boolA": false,
+      "answerB": "Hans im Glück",
+      "boolB": true,
+      "answerC": "Die Sterntaler",
+      "boolC": false,
+      "answerD": "Rotkäppchen",
+      "boolD": false
+    }
+
   ]
 }

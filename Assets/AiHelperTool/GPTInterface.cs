@@ -23,15 +23,23 @@ public class GPTInterface : MonoBehaviour
     private bool start;
 
 
-    private OpenAIAPI api = new OpenAIAPI("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");
+    private OpenAIAPI api = new OpenAIAPI("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");
 
 
     public async void GetResponse(string question)
     {
 
+        Debug.Log(question+"question");
+
         var result = await api.Completions.CreateCompletionAsync(new CompletionRequest(question + "\n", model: Model.DavinciText, max_tokens: 100));
 
+        Debug.Log(result.ToString()+ "result");
+
+
         textToSpeech.speech = result.ToString();
+
+
+
 
         start = true;
 

@@ -19,7 +19,7 @@ public class Answers : MonoBehaviour
     [System.Serializable]
     public class AnswerList
     {
-        public Answer[] answers = new Answer[4];
+        public Answer[] answers = new Answer[10];
 
     }
 
