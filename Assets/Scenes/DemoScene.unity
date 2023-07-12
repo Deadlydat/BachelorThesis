@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 263145591}
     m_SelectOnDown: {fileID: 1900863687}
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   answerScript: {fileID: 1880772514}
   endeObject: {fileID: 490196975}
   uiTablet: {fileID: 2666078145802131793}
-  AiHelperTool: {fileID: 0}
+  AiHelperTool: {fileID: 635289926}
 --- !u!1 &421848383
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,14 +19,14 @@ public class Answers : MonoBehaviour
     [System.Serializable]
     public class AnswerList
     {
-        public Answer[] answers = new Answer[4];
+        public Answer[] answers = new Answer[10];
 
     }
 
 
-    private int CalculateAnswerNumber()
+    private int CalculateAnswerNumber(string path)
     {
-        string path = "Assets/Answers";
+        //string path = "Assets/Answers";
         int fCount = Directory.GetFiles(path, "*.json", SearchOption.TopDirectoryOnly).Length;
 
         return fCount;
@@ -34,15 +34,37 @@ public class Answers : MonoBehaviour
 
     public void SaveItemInfo(AnswerList answerList)
     {
-     
-        int newFileNumber = CalculateAnswerNumber();
-  
+        string folderName = "MyGameFolder";
+        string folderPath = System.IO.Path.Combine(Application.persistentDataPath, folderName);
 
-       string  path = "Assets/Answers/AnswersFile" + newFileNumber+".json";
+        // Überprüfen, ob der Ordner bereits existiert, andernfalls erstellen
+        if (!System.IO.Directory.Exists(folderPath))
+        {
+            System.IO.Directory.CreateDirectory(folderPath);
+        }
+
+        int newFileNumber = CalculateAnswerNumber(folderPath);
+
+        // Erstellen des Dateinamens und des vollständigen Dateipfads
+        string filename = "AnswersFile" + newFileNumber + ".json";
+        string filePath = System.IO.Path.Combine(folderPath, filename);
+
+
+
+
+
+        Debug.Log("persistentDataPath: " + Application.persistentDataPath);
+
+
+
+
+        //string  path = "Assets/Answers/AnswersFile" + newFileNumber+".json";
+        string path = Path.Combine(Application.persistentDataPath, "AnswersFile" + newFileNumber + ".json");
+
 
 
         string str = JsonUtility.ToJson(answerList);
-        using (FileStream fs = new FileStream(path, FileMode.Create))
+        using (FileStream fs = new FileStream(filePath, FileMode.Create))
         {
             using (StreamWriter writer = new StreamWriter(fs))
             {

@@ -23,7 +23,7 @@ public class GPTInterface : MonoBehaviour
     private bool start;
 
 
-    private OpenAIAPI api = new OpenAIAPI("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");
+    private OpenAIAPI api = new OpenAIAPI("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");
 
 
     public async void GetResponse(string question)

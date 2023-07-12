@@ -22,23 +22,43 @@ public class MenuController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp().gameObject);
+            Selectable selectableOnUp = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+            if (selectableOnUp != null)
+            {
+                EventSystem.current.SetSelectedGameObject(selectableOnUp.gameObject);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown().gameObject);
+            Selectable selectableOnDown = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+            if (selectableOnDown != null)
+            {
+                EventSystem.current.SetSelectedGameObject(selectableOnDown.gameObject);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnLeft().gameObject);
+            Selectable selectableOnLeft = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnLeft();
+            if (selectableOnLeft != null)
+            {
+                EventSystem.current.SetSelectedGameObject(selectableOnLeft.gameObject);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            EventSystem.current.SetSelectedGameObject(EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnRight().gameObject);
+            Selectable selectableOnRight = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnRight();
+            if (selectableOnRight != null)
+            {
+                EventSystem.current.SetSelectedGameObject(selectableOnRight.gameObject);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            UnityEngine.UI.Button button = EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.Button>();
+            if (button != null)
+            {
+                button.onClick.Invoke();
+            }
         }
     }
 }
