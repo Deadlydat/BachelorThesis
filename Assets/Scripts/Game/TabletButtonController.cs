@@ -17,6 +17,7 @@ public class TabletButtonController : MonoBehaviour
     public Answers answerScript;
     public GameObject endeObject;
     public GameObject uiTablet;
+    public GameObject AiHelperTool;
 
     private QuestionList questionsList;
     private int questionNumber = 0;
@@ -96,6 +97,7 @@ public class TabletButtonController : MonoBehaviour
 
             questionNumber = 0;
             endeObject.SetActive(true);
+            AiHelperTool.SetActive(false);
 
             uiTablet.SetActive(false);
         }
