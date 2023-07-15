@@ -26,8 +26,8 @@ public class Answers : MonoBehaviour
 
     private int CalculateAnswerNumber(string path)
     {
-        //string path = "Assets/Answers";
-        int fCount = Directory.GetFiles(path, "*.json", SearchOption.TopDirectoryOnly).Length;
+        string pathh = "Assets/Answers";
+        int fCount = Directory.GetFiles(pathh, "*.json", SearchOption.TopDirectoryOnly).Length;
 
         return fCount;
     }
@@ -47,7 +47,7 @@ public class Answers : MonoBehaviour
 
         // Erstellen des Dateinamens und des vollständigen Dateipfads
         string filename = "AnswersFile" + newFileNumber + ".json";
-        string filePath = System.IO.Path.Combine(folderPath, filename);
+        string filePath = System.IO.Path.Combine(folderPath, filename);// für build version
 
 
 
@@ -58,13 +58,11 @@ public class Answers : MonoBehaviour
 
 
 
-        //string  path = "Assets/Answers/AnswersFile" + newFileNumber+".json";
-        string path = Path.Combine(Application.persistentDataPath, "AnswersFile" + newFileNumber + ".json");
-
+        string path = "Assets/Answers/AnswersFile" + newFileNumber + ".json";
 
 
         string str = JsonUtility.ToJson(answerList);
-        using (FileStream fs = new FileStream(filePath, FileMode.Create))
+        using (FileStream fs = new FileStream(path, FileMode.Create))
         {
             using (StreamWriter writer = new StreamWriter(fs))
             {
